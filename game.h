@@ -1,6 +1,7 @@
 #pragma once
 #include <Engine.h>
 #include <Graphics/spritefont.h>
+#include <Graphics/particleengine2D.h>
 
 class Level;
 
@@ -21,4 +22,6 @@ private:
 	bool sound = true;
 	bool music = true;
 	SpriteFont* newFont;
+	ParticleEngine2D effectEngine;
+	ParticleBatch2D* effectBatch;
 };

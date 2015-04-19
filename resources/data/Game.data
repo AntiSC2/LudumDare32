@@ -15,6 +15,7 @@ resources/textures/healthbar.png
 resources/textures/healthBrick.png
 resources/textures/arrow.png
 resources/textures/player.png
+resources/textures/circle.png
 #Sounds
 resources/sounds/Hit.wav
 resources/sounds/Shoot.wav

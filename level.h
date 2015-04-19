@@ -5,13 +5,14 @@
 #include <vector>
 #include <glm/glm.hpp>
 #include <string>
+#include <Graphics/particleengine2D.h>
 
 class SpriteBatch;
 class Camera2D;
 
 class Level {
 public:
-	Level(const char* levelData);
+	Level(const char* levelData, ParticleBatch2D* batch);
 	~Level();
 
 	void update(Camera2D* camera, bool sound = true, bool music = true);
@@ -36,5 +37,6 @@ private:
 	bool upgradePoint = 0;
 	int speedStat = 0;
 	unsigned int health = 5;
+	ParticleBatch2D* effectBatch = nullptr;
 };
 

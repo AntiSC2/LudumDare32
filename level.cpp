@@ -6,13 +6,13 @@
 #include <Managers/rm.h>
 #include <Graphics/texture.h>
 
-Level::Level(const char* levelData) {
+Level::Level(const char* levelData, ParticleBatch2D* batch) : effectBatch(batch) {
 
 }
 
 
 Level::~Level() {
-
+	effectBatch = nullptr;
 }
 
 void Level::update(Camera2D* camera, bool sound, bool music) {
@@ -133,6 +133,14 @@ void Level::update(Camera2D* camera, bool sound, bool music) {
 
 					bullets[b].hitTarget();
 					enemies[i].getHit(bullets[b].getDamage());
+					for (size_t p = 0; p < 20; p++) {
+						int dirX = rand() % 32 - 16;
+						int dirY = rand() % 32 - 16;
+						float speed = rand() % 6 + 3;
+						glm::vec2 tempDir(dirX, dirY);
+						tempDir = glm::normalize(tempDir);
+						effectBatch->addParticle(glm::vec2(enemies[i].getDestRect().x, enemies[i].getDestRect().y), tempDir * speed, rand() % 8 + 8, rand() % 8 + 8, Color(200, 0, 0, 255));
+					}
 				}
 			if (collide(player.getDestRect().x, player.getDestRect().y, player.getDestRect().z, player.getDestRect().w,
 				enemies[i].getDestRect().x, enemies[i].getDestRect().y, enemies[i].getDestRect().z, enemies[i].getDestRect().w)) {

@@ -29,8 +29,11 @@ void Game::init() {
 	e.initResources("resources/data/Game.data");
 	e.initShaders("resources/shaders/shader.vert", "resources/shaders/shader.frag");
 	e.camera->setPosition(glm::vec2(400, 300));
-	level = new Level("resources/data/Level.data");
+	effectBatch = new ParticleBatch2D;
+	level = new Level("resources/data/Level.data", effectBatch);
 	newFont = new SpriteFont("resources/fonts/Differentiator_MS_Windows_1252_Western.ttf", 32);
+	effectBatch->initParticles(1000, 0.08f, "resources/textures/circle.png", [](Particle& p) {p.position += p.velocity; p.color.a = 255 * p.life; });
+	effectEngine.addBatch(effectBatch);
 }
 
 void Game::gameLoop() {
@@ -84,7 +87,7 @@ void Game::update() {
 		level = nullptr;
 	}
 	if (level == nullptr && Input::keyTyped(SDL_SCANCODE_SPACE)) {
-		level = new Level("resources/data/Level.data");
+		level = new Level("resources/data/Level.data", effectBatch);
 	}
 	if (Input::keyTyped(SDL_SCANCODE_M)) {
 		if (music == false)
@@ -98,6 +101,7 @@ void Game::update() {
 		else
 			sound = false;
 	}
+	effectEngine.update();
 }
 
 void Game::draw() {
@@ -110,6 +114,7 @@ void Game::draw() {
 		level->drawLevel(e.TheBatch);
 	else
 		e.TheBatch->draw(glm::vec4(0.0f, 0.0f, 800.0f, 600.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f), RM::TextureCache->createTexture("resources/textures/GameOver.png")->getID(), 0.0f, Color(255, 255, 255, 255));
+	effectEngine.render(e.TheBatch);
 	e.TheBatch->end();
 	e.TheBatch->renderDraw();
 	e.screen->update();
