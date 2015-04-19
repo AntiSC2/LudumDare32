@@ -1,0 +1,8 @@
+﻿  game.cpp
+game.cpp(32): warning C4316: 'Level' : object allocated on the heap may not be aligned 16
+game.cpp(87): warning C4316: 'Level' : object allocated on the heap may not be aligned 16
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  Generating code
+  Finished generating code
+SchoolEngine.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'SchoolEngine.lib(glew.obj)' or at 'D:\Anti\Documents\Ludum Dare 32\SchoolEngine\Release\vc120.pdb'; linking object as if no debug info
+  LudumDare32.vcxproj -> D:\Anti\Documents\Ludum Dare 32\SchoolEngine\Release\LudumDare32.exe

@@ -1,0 +1,4 @@
+﻿  game.cpp
+d:\anti\documents\ludum dare 32\schoolengine\ludumdare32\game.cpp(32): warning C4316: 'Level' : object allocated on the heap may not be aligned 16
+d:\anti\documents\ludum dare 32\schoolengine\ludumdare32\game.cpp(87): warning C4316: 'Level' : object allocated on the heap may not be aligned 16
+  LudumDare32.vcxproj -> D:\Anti\Documents\Ludum Dare 32\SchoolEngine\Debug\LudumDare32.exe
